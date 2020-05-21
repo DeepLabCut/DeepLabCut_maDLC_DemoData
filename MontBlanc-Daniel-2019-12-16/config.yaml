@@ -1,0 +1,80 @@
+    # Project definitions (do not edit)
+Task: MontBlanc
+scorer: Daniel
+date: Dec16
+multianimalproject: true
+
+    # Project path (change when moving around)
+project_path: TBA
+
+    # Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  ? FranceVideos/montblanc.mov
+  : crop: 0, 400, 0, 400
+
+individuals:
+- bird1
+- bird2
+- bird3
+- bird4
+- bird5
+- bird6
+- bird7
+- bird8
+uniquebodyparts: []
+multianimalbodyparts:
+- head
+- tail
+- leftwing
+- rightwing
+skeleton:
+- - head
+  - tail
+- - leftwing
+  - rightwing
+- - head
+  - leftwing
+- - head
+  - rightwing
+- - leftwing
+  - tail
+- - rightwing
+  - tail
+
+bodyparts: MULTI!
+start: 0
+stop: 1
+numframes2pick: 7
+
+    # Plotting configuration
+skeleton_color: black
+pcutoff: 0.1
+dotsize: 7
+alphavalue: 0.7
+colormap: jet
+
+    # Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 1
+default_net_type: resnet_50
+default_augmenter: default
+snapshotindex: -1
+batch_size: 8
+
+    # Cropping Parameters (for analysis and outlier frame detection)
+cropping: false
+croppedtraining: true
+    #if cropping is true for analysis, then set the values here:
+x1: 0
+x2: 640
+y1: 277
+y2: 624
+
+    # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true
+
+
