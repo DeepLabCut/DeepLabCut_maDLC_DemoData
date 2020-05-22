@@ -1,6 +1,7 @@
 import os, sys
 #os.environ['DLClight']='True'
 import deeplabcut
+from pathlib import Path
 
 nmspath = 'deeplabcut/pose_estimation_tensorflow/lib/nms_cython'
 sys.path.append(os.path.join('/usr/local/lib/python3.6/dist-packages',nmspath))
@@ -78,9 +79,16 @@ deeplabcut.create_video_with_all_detections(path_config_file, [video[0]], model)
 for tm in ['skeleton', 'box']:
     deeplabcut.convert_detections2tracklets(path_config_file,[videopath],shuffle=shuffle,videotype=videotype,track_method=tm)
     #deeplabcut.convert_raw_tracks_to_h5(path_config_file,)
+    if tm == 'skeleton':
+        tmn='sk'
+    else:
+        tmn='bx'
+
+    tracks_pickle=os.path.join(videopath,Path(video[0]).stem+model+'_'+tmn+'.pickle')
+
     deeplabcut.convert_raw_tracks_to_h5(path_config_file, tracks_pickle)
     deeplabcut.create_labeled_video(path_config_file,[videopath],shuffle=shuffle,videotype=videotype,track_method=tm)
     deeplabcut.create_labeled_video(path_config_file,[videopath],shuffle=shuffle,videotype=videotype,track_method='box',color_by='individual')
 
 
-    deeplabcut.extract_outlier_frames(path_config_file,[videopath],shuffle=shuffle,videotype=videotype,track_method=tm,epsilon=40)
+    #deeplabcut.extract_outlier_frames(path_config_file,[videopath],shuffle=shuffle,videotype=videotype,track_method=tm,epsilon=40)
