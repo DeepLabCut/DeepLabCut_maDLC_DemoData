@@ -57,7 +57,7 @@ deeplabcut.evaluate_network(path_config_file,Shuffles=[shuffle],plotting=True)
 deeplabcut.evaluate_multianimal_crossvalidate(path_config_file,Shuffles=[shuffle])
 
 print("Extracting maps...")
-deeplabcut.extract_save_all_maps(config_path, Indices=[0, 1, 2, 3, 4, 5])
+deeplabcut.extract_save_all_maps(path_config_file, Indices=[0, 1, 2, 3, 4, 5])
 
 ################## Analyze video #NEW:
 trainposeconfigfile,testposeconfigfile,snapshotfolder=deeplabcut.return_train_network_path(path_config_file,shuffle=shuffle)

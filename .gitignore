@@ -1,3 +1,6 @@
+#Data and examples
+/MontBlanc*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
