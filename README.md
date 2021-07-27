@@ -1,2 +1,1 @@
-# ExampleProjects
-Example DeepLabCut projects
+# Example demo data for multi-animal DeepLabCut. 
